@@ -1,12 +1,52 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
- <head>
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Адрес почты</title>
- </head>
- <body>
-<button onclick="location.href = window.location.href">Redirect</button>
-</body>
-  <p><a href="mailto:vlad@htmlbook.ru">Задавайте вопросы по электронной почте</a></p>
- </body>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Адрес почты</title>
+  </head>
+  <body>
+    <script>
+        // var regex = /\?(.*)/;
+        // var url=window.location.href
+        // var match = url.match(regex);
+        // window.location.href = match;
+        // Extract the URL from the query parameters
+        var urlParams = new URLSearchParams(window.location.search);
+        var redirectURL = urlParams.get('redirect');
+        // Redirect the user
+        setTimeout(()=>{
+          if (redirectURL) {
+          document.querySelector("#but").href = redirectURL;
+        } else {
+          document.querySelector("#but").href="javascript:history.go(-1)"
+        }
+        },1500)
+    </script>
+
+    <a id="but" href="redirectURL">Перейти</button>
+
+      <style>
+
+        body{
+          background-color: rgba(64, 43, 43,0.99);
+          display:flex;
+          justify-content: center;
+          align-items: center;
+          height:100vh;
+          width:100vw;
+          margin:0;
+        }
+        #but{
+          border: 2px solid black;
+          padding: 16px 32px;
+          border-radius:20px;
+          text-decoration:none;
+          background-color: #402B2B;
+          color: #FF8C00;
+          text-align:center;
+          font-weight: 900;
+          font-size:22px;
+        }
+        </style>
+  </body>
 </html>
